@@ -1,0 +1,23 @@
+div[data-role="buttons"] {
+  button {
+    &:not(:first-child):not(:last-child) {
+      background-color: red;
+    }
+  }
+}
+table {
+  background-color: yellow;
+  width: 110px;
+  border-spacing: 0;
+  td, th {
+    text-align: left;
+  }
+  tr {
+    td:first-child, th:first-child {
+      text-align: right;
+    }
+  }
+  thead th {
+    border-bottom: 1px solid red;
+  }
+}

@@ -1,0 +1,6 @@
+button:not(:first-child) {
+  background-color: red;
+}
+button:not(:last-child) {
+  background-color: red;
+}

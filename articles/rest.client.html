@@ -8,8 +8,8 @@
 Дока по паблик апи <a href="http://docs.abcp.ru/wiki/API">http://docs.abcp.ru/wiki/API</a>
 <ol>
     <li>В консольке авторизоваться под рутом</li>
-    <li>Зайти в <code>/etc/hosts</code> и [spoiler title="добавить хост"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-new-host.png"><img class="alignnone size-full wp-image-182" src="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-new-host.png" alt="public API new host" width="739" height="356" /></a>[/spoiler]<code>127.0.0.1 alfapar.ru.public.api.abcp.ru</code>, где хост (<span style="color: #339966;">alfapar.ru.public.api.abcp.ru</span>) взять со страницы [spoiler title="настроек клиента"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/reseller-API-settings.png"><img class="alignnone size-full wp-image-168" src="http://tuovilaine.ru/wp-content/uploads/2015/05/reseller-API-settings.png" alt="reseller API settings" width="938" height="495" /></a>[/spoiler]</li>
-    <li>Затем прописать в апачах новый [spoiler title="алиас для public.api"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-new-alias.png"><img class="alignnone size-full wp-image-180" src="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-new-alias.png" alt="public API new alias" width="743" height="508" /></a>[/spoiler]
+    <li>Зайти в <code>/etc/hosts</code> и [spoiler title="добавить хост"]<a href="http://tuovi.ru/public-API-new-host.png"><img class="alignnone size-full wp-image-182" src="http://tuovi.ru/public-API-new-host.png" alt="public API new host" width="739" height="356" /></a>[/spoiler]<code>127.0.0.1 alfapar.ru.public.api.abcp.ru</code>, где хост (<span style="color: #339966;">alfapar.ru.public.api.abcp.ru</span>) взять со страницы [spoiler title="настроек клиента"]<a href="http://tuovi.ru/reseller-API-settings.png"><img class="alignnone size-full wp-image-168" src="http://tuovi.ru/reseller-API-settings.png" alt="reseller API settings" width="938" height="495" /></a>[/spoiler]</li>
+    <li>Затем прописать в апачах новый [spoiler title="алиас для public.api"]<a href="http://tuovi.ru/public-API-new-alias.png"><img class="alignnone size-full wp-image-180" src="http://tuovi.ru/public-API-new-alias.png" alt="public API new alias" width="743" height="508" /></a>[/spoiler]
 <pre class="toolbar:1 lang:apache decode:true "># public.api.abcp.ru
 &lt;VirtualHost *:80&gt;
     DocumentRoot /usr/local/sites/public.api
@@ -24,13 +24,13 @@
     </li>
     <li>Сохранить и рестартануть апач
         <code>service apache2 restart</code></li>
-    <li>Вносим в код операции необходимые [spoiler title="изменения"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/update-user-balance-public-API-operation.png"><img class="alignnone size-full wp-image-195" src="http://tuovilaine.ru/wp-content/uploads/2015/05/update-user-balance-public-API-operation.png" alt="update user  balance public API operation" width="1151" height="342" /></a>[/spoiler]</li>
-    <li>Заходим в <strong>Advanced Rest Client</strong> (плагин в хроме) и указываем [spoiler title="инфу из доки"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-operation-params.png"><img class="alignnone size-full wp-image-197" src="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-operation-params.png" alt="public API operation params" width="785" height="691" /></a>[/spoiler]
-        <a href="http://tuovilaine.ru/wp-content/uploads/2015/05/rest-client.png"><img class="alignnone size-full wp-image-198" src="http://tuovilaine.ru/wp-content/uploads/2015/05/rest-client.png" alt="rest client" width="1450" height="980" /></a>
+    <li>Вносим в код операции необходимые [spoiler title="изменения"]<a href="http://tuovi.ru/images/update-user-balance-public-API-operation.png"><img class="alignnone size-full wp-image-195" src="http://tuovi.ru/images/update-user-balance-public-API-operation.png" alt="update user  balance public API operation" width="1151" height="342" /></a>[/spoiler]</li>
+    <li>Заходим в <strong>Advanced Rest Client</strong> (плагин в хроме) и указываем [spoiler title="инфу из доки"]<a href="http://tuovi.ru/images/public-API-operation-params.png"><img class="alignnone size-full wp-image-197" src="http://tuovi.ru/images/public-API-operation-params.png" alt="public API operation params" width="785" height="691" /></a>[/spoiler]
+        <a href="http://tuovi.ru/images/rest-client.png"><img class="alignnone size-full wp-image-198" src="http://tuovi.ru/images/rest-client.png" alt="rest client" width="1450" height="980" /></a>
         Указываем:
         1) Урл операции (хост + ”Операция” из доки ), отмечаем “Метод” (POST)
         2-3) Данные формы, удобнее скопировать “Параметры POST” с доки, потом перевести в режим “Form”
-        Логин и пароль берем из тех же [spoiler title="настроек API реселлера"]<a href="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-reseller-auth-data.png"><img class="alignnone size-full wp-image-201" src="http://tuovilaine.ru/wp-content/uploads/2015/05/public-API-reseller-auth-data.png" alt="public API reseller auth data" width="872" height="459" /></a>[/spoiler]
+        Логин и пароль берем из тех же [spoiler title="настроек API реселлера"]<a href="http://tuovi.ru/images/public-API-reseller-auth-data.png"><img class="alignnone size-full wp-image-201" src="http://tuovi.ru/images/public-API-reseller-auth-data.png" alt="public API reseller auth data" width="872" height="459" /></a>[/spoiler]
         4) Указываем Content-Type = ..form-urlencoded, иначе будет возвращать
         <code>
             {

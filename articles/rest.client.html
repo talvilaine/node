@@ -8,8 +8,13 @@
 Дока по паблик апи <a href="http://docs.abcp.ru/wiki/API">http://docs.abcp.ru/wiki/API</a>
 <ol>
     <li>В консольке авторизоваться под рутом</li>
-    <li>Зайти в <code>/etc/hosts</code> и [spoiler title="добавить хост"]<a href="http://tuovi.ru/public-API-new-host.png"><img class="alignnone size-full wp-image-182" src="http://tuovi.ru/public-API-new-host.png" alt="public API new host" width="739" height="356" /></a>[/spoiler]<code>127.0.0.1 alfapar.ru.public.api.abcp.ru</code>, где хост (<span style="color: #339966;">alfapar.ru.public.api.abcp.ru</span>) взять со страницы [spoiler title="настроек клиента"]<a href="http://tuovi.ru/reseller-API-settings.png"><img class="alignnone size-full wp-image-168" src="http://tuovi.ru/reseller-API-settings.png" alt="reseller API settings" width="938" height="495" /></a>[/spoiler]</li>
-    <li>Затем прописать в апачах новый [spoiler title="алиас для public.api"]<a href="http://tuovi.ru/public-API-new-alias.png"><img class="alignnone size-full wp-image-180" src="http://tuovi.ru/public-API-new-alias.png" alt="public API new alias" width="743" height="508" /></a>[/spoiler]
+    <li>Зайти в <code>/etc/hosts</code> и [spoiler title="добавить хост"]<a href="http://tuovi.ru/images/public-API-new-host.png">
+        <img class="alignnone size-full wp-image-182" src="http://tuovi.ru/images/public-API-new-host.png" alt="public API new host" width="739" height="356" /></a>
+        [/spoiler]<code>127.0.0.1 alfapar.ru.public.api.abcp.ru</code>, где хост (<span style="color: #339966;">alfapar.ru.public.api.abcp.ru</span>)
+        взять со страницы [spoiler title="настроек клиента"]<a href="http://tuovi.ru/images/reseller-API-settings.png">
+            <img class="alignnone size-full wp-image-168" src="http://tuovi.ru/images/reseller-API-settings.png" alt="reseller API settings" width="938" height="495" /></a>[/spoiler]</li>
+    <li>Затем прописать в апачах новый [spoiler title="алиас для public.api"]<a href="http://tuovi.ru/images/public-API-new-alias.png">
+        <img class="alignnone size-full wp-image-180" src="http://tuovi.ru/images/public-API-new-alias.png" alt="public API new alias" width="743" height="508" /></a>[/spoiler]
 <pre class="toolbar:1 lang:apache decode:true "># public.api.abcp.ru
 &lt;VirtualHost *:80&gt;
     DocumentRoot /usr/local/sites/public.api

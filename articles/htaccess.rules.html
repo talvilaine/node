@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Битая ссылка поиска</title>
+</head>
+<body>
+<span style="color: #008000;">автодебют.рф</span> <a href="http://bt.abcp.ru/view.php?id=34618">34618: Ошибки ссылок на странице просмотра проценок</a>
+Битая ссылка поиска <a href="http://www.автодебют.рф/?pbrandnumber=HDCVC01-162X&amp;pbrandname=HONDA%252FACURA">http://www.автодебют.рф/?pbrandnumber=HDCVC01-162X&amp;pbrandname=HONDA%252FACURA</a>
+С кодированием ссылок ошибок не было, проблема была в редиректе на www (не опция <a href="http://root.abcp.ru/?page=options&amp;action=edit&amp;id=388">redirect_to_www</a>, а правило в htaccess): спецсимволы кодировались повторно и вместо %2F (знак "/" в бренде) получалось %252F.
+Добавила флаг <a href="http://httpd.apache.org/docs/current/rewrite/flags.html#flag_ne">[NE]</a> для редиректа в .htaccess
+<pre class="toolbar:1 trim-whitespace:false lang:apache decode:true">RewriteRule ^(.*)$  http://www.xn--80accif6c1ae1i.xn--p1ai/$1 [NE,R=301,L]
+</pre>
+</body>
+</html>

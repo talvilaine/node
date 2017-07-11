@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Использование функций в тернарной операции</title>
+</head>
+<body>
+<span style="color: #eda4a4;">В обеих функциях должен быть return</span>
+<pre class="toolbar:1 trim-whitespace:false lang:php decode:true">$franchisee = \Franchisee::getCurrent();
+$franchiseeDomain = (!empty($franchisee-&gt;domainAliases)) ?
+	function() use ($franchisee) {
+		$domainAliases = array_map('trim', explode(',', $franchisee-&gt;domainAliases));
+		return !empty($domainAliases[0]) ? $domainAliases[0] : Registry::getSite()-&gt;officialSite;
+	} :
+	function() {
+		return Registry::getSite()-&gt;officialSite;
+	};
+$templateValues['CONTACTS_SITE'] = $franchiseeDomain();
+</pre>
+
+</body>
+</html>

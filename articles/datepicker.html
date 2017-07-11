@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Datepicker</title>
+</head>
+<body>
+<pre class="toolbar:1 trim-whitespace:false lang:javascript decode:true">
+// установка локализации
+$.datepicker.setDefaults($.datepicker.regional['ru']);
+</pre>
+<pre class="toolbar:1 trim-whitespace:false lang:javascript decode:true">
+$('.paymentDateTimeField').datepicker({
+	showOn: 'both',
+	buttonImage: '//astatic.abcp.ru/common.images/date_selector.gif',
+	buttonImageOnly: true,
+	changeMonth: true,
+	changeYear: true,
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	dateFormat: 'dd.mm.yy',
+	showAnim: 'slideDown'
+});
+</pre>
+Для выбора времени
+<pre class="toolbar:1 trim-whitespace:false lang:javascript decode:true">
+$('.paymentDateTimeField').datetimepicker({
+	format:'d.m.Y H:i'
+});
+</pre>
+Скрипт добавляет для поля новый класс <code>.hasDatepicker</code> (с шириной 90px).
+</body>
+</html>

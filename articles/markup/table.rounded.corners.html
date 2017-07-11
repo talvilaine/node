@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление скругленных углов таблице</title>
+</head>
+<body>
+Источник: <a href="http://red-team-design.com/practical-css3-tables-with-rounded-corners/">http://red-team-design.com/practical-css3-tables-with-rounded-corners/</a>
+Here's the trick: while <strong>border-collapse</strong>'s default value is <strong>separate</strong>, we need also to set the <strong>border-spacing</strong> to <strong>0</strong>.
+<pre class="toolbar:1 lang:css decode:true ">table { *border-collapse: collapse; /* IE7 and lower */ border-spacing: 0; }</pre>
+Then, we just need to round some corners
+<pre class="toolbar:1 lang:css decode:true ">th:first-child { border-radius: 6px 0 0 0; }
+th:last-child { border-radius: 0 6px 0 0; }
+th:only-child{ border-radius: 6px 6px 0 0; }
+</pre>
+Может возникнуть <a href="http://tuovilaine.ru/archives/142" target="_blank">проблема</a>: в мозилле пустые клетки не имеют бордера. Лечится св-вом <code><a href="http://www.w3schools.com/cssref/pr_tab_empty-cells.asp">empty-cells</a>: show</code>
+</body>
+</html>

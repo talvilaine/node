@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проблемы с кодировкой (encoding) в gedit</title>
+</head>
+<body>
+Данный способ является самым быстрым.
+<code>gsettings set org.gnome.gedit.preferences.encodings auto-detected "['UTF-8', 'WINDOWS-1251', 'CURRENT', 'ISO-8859-15', 'UTF-16']"</code>
+Теперь, если вы откроете файл с кодировкой WINDOWS-1251 - он будет правильно отображаться в Gedit. (gedit исчезает из списка доступных приложений, но его можно запустить из консоли)
+
+Взято из <a href="http://help.ubuntu.ru/wiki/%D1%81%D0%BC%D0%B5%D0%BD%D0%B0_%D0%BA%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B8_%D0%B2_gedit">статьи</a>.
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Примеры нативных запросов в AR (native sql)</title>
+</head>
+<body>
+<pre class="toolbar:1 trim-whitespace:false lang:php decode:true">
+$qb = ActiveRecordsManager::getEntityManager(self::getNamespace())->createQueryBuilder();
+$query = $qb->select($qb->expr()->count('op.id'))
+	->from('\NS\AR\ABCP\OrderPosition', 'op')
+	->where('op.Order = :order')
+	->setMaxResults(1)
+	->setParameters(array('order' => $order));
+return $query->getQuery()->getSingleScalarResult();
+</pre>
+</body>
+</html>

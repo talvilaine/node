@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js memory leak</title>
+</head>
+<body>
+Maxim Dyachkov, [13.10.15 12:02]
+[Forwarded from Artem Soltynskiy]
+fixed memoty leak. Как рекомендации: не создавать объекты в замыканиях (особенно в xhr-овских и особенно jquery),
+зачищать xhr объекты и другие переменные в замыканиях, не использовать setInterval - юзаем setTimeout, зачищаем timeoutId.
+</body>
+</html>

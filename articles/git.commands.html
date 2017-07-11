@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Git commands</title>
+</head>
+<body>
+Перейти в рабочую директорию
+<code>cd /opt/projects/abcp/</code>
+
+Логи, последние три коммита
+<code>git log -3</code>
+
+Откатить до коммита с хэшем &lt;commit>
+<code>git revert &lt;commit&gt;</code>
+<code>git reset --hard &lt;commit&gt;</code>
+
+Форсированная перезаливка ветки
+<code>git push -f origin myBranch</code>
+
+Обновиться с ветки (в данном случае с мастера)
+<code>git pull --rebase origin master</code>
+
+Интерактивный ребейз для склейки коммитов,
+где &lt;commit&gt; - хэш коммита, который еще не должен попадать в склейку, схлопываются коммиты, следующие за ним
+<code>git rebase -i &lt;commit&gt;</code>
+
+Если коммит с мержем уже создался, то избавиться от него можно ребейзом с мастера.
+<code>git rebase origin/master</code>
+</body>
+</html>

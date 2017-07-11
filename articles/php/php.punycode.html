@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка на punycode-домен</title>
+</head>
+<body>
+<a href="http://bt.abcp.ru/view.php?id=52840" target="_blank">52840: Внешним ссылкам устанавливать rel=nofollow</a>
+<span style="color: #008000;">авто-опт-торг.com</span> =&gt; xn-----6kcih7dbbhmpeb.com
+<pre class="toolbar:1 trim-whitespace:false lang:php decode:true">//require_once Config::FRAMEWORK_PATH . 'lib/phpwhois.4.2.2/whois.idna.php';
+$IDN = new idna_convert();
+$res = strpos($searchLinkStr, '//' . $domainToCheck) || strpos($searchLinkStr, '.' . $domainToCheck);
+if ($res === FALSE && preg_match('/[а-яА-ЯёЁ]/u', $domainToCheck) && !is_null($IDN)) {
+	// проверка на punycode-домен (xn-----6kcih7dbbhmpeb.com)
+	$punycodeDomain = $IDN->encode($domainToCheck);
+	$res = strpos($searchLinkStr, '//' . $punycodeDomain) || strpos($searchLinkStr, '.' . $punycodeDomain);
+}
+
+if ($res !== FALSE) {
+	return TRUE;
+}
+</pre>
+<a href="http://git.abcp.ru/?p=abcp.git;a=commitdiff;h=94dd1a10980ee00e4af9064441fa83516d353312"
+   target="_blank">http://git.abcp.ru/?p=abcp.git;a=commitdiff;h=94dd1a10980ee00e4af9064441fa83516d353312</a>
+</body>
+</html>

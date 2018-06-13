@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vee validate examples</title>
+</head>
+<body>
+<pre class="toolbar:1 trim-whitespace:false lang:html decode:true"> 
+<form @submit.prevent data-vv-scope="form-main">
+<div :class="{ 'has-warning': errors.has('form-main.region') }">
+   <div class="btn-group">
+        <span data-vv-name="region" v-model="region" v-validate="'required'">
+            <span v-if="region == ''" class="align-self-center">Регион</span>
+            <span v-else>{{ region }}</span>
+        </span>
+        <div class="dropdown-menu">
+           <div class="items-list">
+             <fieldset v-for="oneRegion in regionList">
+                 <span class="dropdown-item" v-model="region" @click="region = oneRegion">{{ oneRegion }}</span>
+             </fieldset>
+           </div>
+        </div>
+    </div>         
+    <div class="form-control-feedback" v-show="errors.has('form-main.region')">{{ errors.first('form-main.region') }}</div>
+</div>
+</form>
+<form @submit.prevent data-vv-scope="form-main" class="line-inputs" :class="{ 'has-warning': errors.has('form-main.drivers') }">
+     <div class="form-control-feedback" data-vv-name="drivers" v-model="drivers" v-validate="{ required: multidrive != multidriveVariants.multidrive }"
+         v-show="errors.has('form-main.drivers')">{{ errors.first('form-main.drivers') }}</div>
+</form>
+
+<input v-model="email" v-validate.initial="'required|email'" name="field1" type="text"> валидация сразу при загрузке страницы
+<input v-model="field2" v-validate.disable="'required'" name="field2" type="text"> ручная валидация
+</pre>
+
+<pre class="toolbar:1 trim-whitespace:false lang:js decode:true">
+import VeeValidate, { Validator } from 'vee-validate';
+
+    const dictionary = {
+        ru: {
+            messages: {
+                required: function(){
+                    return 'Поле обязательно для заполнения.';
+                },
+                min: function(n,e){
+                    return'Поле должно быть не менее ' + e[0] + ' символов.';
+                }
+            },
+            custom: {
+                password_confirmation: {
+                    is: 'Введенные пароли не совпадают.'
+                },
+                drivers: {
+                    required: 'Добавьте водителя в расчет.'
+                }
+            }
+        }
+    };
+    Validator.localize('ru', dictionary.ru);
+
+    export default {
+        created: function (){
+            var app = this;
+            var emailValidRule = {
+                getMessage: function(){
+                    return 'Поле должно быть действительным электронным адресом.';
+                },
+                validate: function(value){
+                    return /^([^а-яА-ЯёЁ]+)$/.test(value);
+                }
+            };
+            app.$validator.extend('email-valid', emailValidRule);
+        },
+        methods: {
+            removeError: function(exact, scope) {
+                this.$validator.errors.remove(exact);
+            //or
+                this.$validator.errors.remove(exact, scope);
+            },
+            addError: function(){
+                var app = this;
+                app.$validator.errors.add({ field: err.field, msg: err.message, scope: 'form-drivers' });
+            },
+            sendForm: function () {
+                var app = this;
+                app.$validator.validateAll().then(function(result){
+                   if (result) {
+                      // do anything
+                   }
+                });
+            // or
+                return app.$validator.validateAll('form-main').then(function(result){
+                    return Promise.resolve(result);
+                });
+            // or
+                app.$validator.validateAll({
+                        'birthdate': app.birthdate,
+                        'experienceDate': app.experienceDate
+                }, 'form-drivers').then(function(result){
+                    if (result) {
+                      // do anything
+                    }
+                });
+            // or
+                Promise.all([
+                        app.$validator.validate('phone'),
+                        app.$validator.validate('password'),
+                        app.$validator.validate('password_confirmation')
+                ]).then(function(responseArr){
+                        if (!app.errors.items.length) {
+                           // do anything
+                        }
+                });
+            }
+        }
+}
+
+</pre>
+
+<a href="https://baianat.github.io/vee-validate/guide/inferred-rules.html#demo" target="_blank">This is a table of HTML attributes that is inferred as rules.</a>
+
+<pre class="toolbar:1 trim-whitespace:false lang:js decode:true"> 
+const field = this.$validator.fields.find({ name: 'email', scope: 'newsletter' });
+</pre>
+<a href="https://baianat.github.io/vee-validate/api/field.html#getting-the-field-instance" target="_blank">#getting-the-field-instance</a>
+
+</body>
+</html>
